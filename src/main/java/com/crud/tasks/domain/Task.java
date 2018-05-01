@@ -8,14 +8,14 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-//@Getter
-//@AllArgsConstructor
-//@NoArgsConstructor
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity(name = "tasks")
 public class Task {
 
     @Id
-    @GeneratedValue //(strategy = GenerationType.AUTO)
+    @GeneratedValue (strategy = GenerationType.AUTO)
     @Column(name="id")
     private Long id;
 
@@ -24,23 +24,4 @@ public class Task {
 
     @Column(name = "description")
     private String content;
-
-    public Task(long id, String title, String content) {
-        this.id = id;
-        this.title = title;
-        this.content = content;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
 }
