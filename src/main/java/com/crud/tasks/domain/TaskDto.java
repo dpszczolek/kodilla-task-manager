@@ -33,4 +33,8 @@ public class TaskDto {
         return content;
     }
 
+    public TaskDto() {
+
+    }
+
 }
