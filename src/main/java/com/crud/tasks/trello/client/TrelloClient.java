@@ -26,7 +26,7 @@ public class TrelloClient {
     private TrelloConfig trelloConfig;
 
     public List<TrelloBoardDto> getTrelloBoards() {
-        URI url = UriComponentsBuilder.fromHttpUrl(trelloConfig.getTrelloApiEndpoint()+ "members/dpszczolek/boards")
+        URI url = UriComponentsBuilder.fromHttpUrl(trelloConfig.getTrelloApiEndpoint()+ "/members/dpszczolek/boards")
                 .queryParam("key", trelloConfig.getTrelloAppKey())
                 .queryParam("token", trelloConfig.getTrelloToken())
                 .queryParam("fields", "name,id")
@@ -42,7 +42,7 @@ public class TrelloClient {
 
 
     public CreatedTrelloCard createNewCard (TrelloCardDto trelloCardDto) {
-        URI url1 = UriComponentsBuilder.fromHttpUrl(trelloConfig.getTrelloApiEndpoint() + "cards")
+        URI url1 = UriComponentsBuilder.fromHttpUrl(trelloConfig.getTrelloApiEndpoint() + "/cards")
                 .queryParam("key", trelloConfig.getTrelloAppKey())
                 .queryParam("token", trelloConfig.getTrelloToken())
                 .queryParam("name", trelloCardDto.getName())

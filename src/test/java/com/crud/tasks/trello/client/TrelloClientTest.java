@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class TrelloClientTest {
 
- /*   @InjectMocks
+    @InjectMocks
     private TrelloClient trelloClient;
 
     @Mock
@@ -28,10 +28,10 @@ public class TrelloClientTest {
 
     @Mock
     private TrelloConfig trelloConfig;
-*/
+
     @Test
     public void shouldFetchTrelloBoards() throws URISyntaxException {
-/*        when(trelloConfig.getTrelloApiEndpoint()).thenReturn("http://test.com");
+        when(trelloConfig.getTrelloApiEndpoint()).thenReturn("http://test.com");
         when(trelloConfig.getTrelloAppKey()).thenReturn("test");
         when(trelloConfig.getTrelloToken()).thenReturn("test");
 
@@ -47,9 +47,9 @@ public class TrelloClientTest {
         List<TrelloBoardDto> fetchedTrelloBoards = trelloClient.getTrelloBoards();
 
         //Then
-    //    assertEquals(1, fetchedTrelloBoards.size());
+        assertEquals(1, fetchedTrelloBoards.size());
         assertEquals("test_id", fetchedTrelloBoards.get(0).getId());
         assertEquals("test_board", fetchedTrelloBoards.get(0).getName());
-        assertEquals(new ArrayList<>(), fetchedTrelloBoards.get(0).getLists()); */
+        assertEquals(new ArrayList<>(), fetchedTrelloBoards.get(0).getLists());
     }
 }
