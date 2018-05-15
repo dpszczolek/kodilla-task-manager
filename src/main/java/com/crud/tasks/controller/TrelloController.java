@@ -23,7 +23,7 @@ public class TrelloController {
         return trelloFacade.fetchTrelloBoards();
     }
 
-    @RequestMapping(method=RequestMethod.POST, value = "/createTrelloCard")
+    @RequestMapping(method=RequestMethod.POST, value = "/createTrelloCard", consumes = "application/json")
     public CreatedTrelloCardDto createTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
         return trelloFacade.createCard(trelloCardDto);
     }
