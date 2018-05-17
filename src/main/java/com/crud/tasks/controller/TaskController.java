@@ -49,7 +49,7 @@ public class TaskController {
         service.saveTask(taskMapper.mapToTask(taskDto));
     }
 
-    public class TaskNotFoundException extends Exception {
+    public static class TaskNotFoundException extends Exception {
 
     }
 }
