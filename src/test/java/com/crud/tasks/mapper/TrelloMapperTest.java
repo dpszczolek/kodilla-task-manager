@@ -38,6 +38,7 @@ public class TrelloMapperTest {
 
         Assert.assertEquals(2, trelloMapper.mapToBoardsDto(trelloBoards).size());
         Assert.assertEquals("test name", trelloMapper.mapToBoardsDto(trelloBoards).get(0).getName());
+        Assert.assertEquals("test name2", trelloMapper.mapToBoardsDto(trelloBoards).get(1).getName());
     }
 
     @Test

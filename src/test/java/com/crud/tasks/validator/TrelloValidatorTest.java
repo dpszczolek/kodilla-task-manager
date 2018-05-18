@@ -1,6 +1,7 @@
 package com.crud.tasks.validator;
 
 import com.crud.tasks.domain.TrelloBoard;
+import com.crud.tasks.domain.TrelloCard;
 import com.crud.tasks.domain.TrelloList;
 import com.crud.tasks.trello.validator.TrelloValidator;
 import org.junit.Test;

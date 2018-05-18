@@ -91,6 +91,7 @@ public class TaskControllerTest {
                 .characterEncoding("UTF-8")
                 .content(jsonContent))
                 .andExpect(status().is(200))
+                .andExpect(jsonPath("$.id", is(1)))
                 .andExpect(jsonPath("$.title", is("task title updated")))
                 .andExpect(jsonPath("$.content", is("task content updated")));
     }
