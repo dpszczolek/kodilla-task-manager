@@ -1,6 +1,8 @@
 package com.crud.tasks.trello.client;
 
+import com.crud.tasks.domain.CreatedTrelloCardDto;
 import com.crud.tasks.domain.TrelloBoardDto;
+import com.crud.tasks.domain.TrelloCardDto;
 import com.crud.tasks.trello.config.TrelloConfig;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,7 +40,7 @@ public class TrelloClientTest {
     }
 
     @Test
-    public void shouldFetchTrelloBoards() throws URISyntaxException {
+    public void shouldFetchTrelloBoards() throws URISyntaxException{
         TrelloBoardDto[] trelloBoards = new TrelloBoardDto[1];
         trelloBoards[0] = new TrelloBoardDto("test_id", "test_board", new ArrayList<>());
 
@@ -57,7 +59,7 @@ public class TrelloClientTest {
     }
 
     @Test
-    public void shouldReturnEmptyCard() throws URISyntaxException {
+    public void shouldReturnEmptyCard() throws URISyntaxException{
 
         TrelloBoardDto[] trelloBoards = new TrelloBoardDto[0];
         URI uri = new URI("http://test.com/members/dpszczolek/boards?key=test&token=test&fields=name,id&lists=all");
@@ -69,4 +71,45 @@ public class TrelloClientTest {
         //Then
         assertEquals(0, fetchedTrelloBoards.size());
     }
+
+    @Test
+    public void shouldCreateCard() throws URISyntaxException{
+        TrelloCardDto trelloCardDto = new TrelloCardDto(
+                "card sample name",
+                "card sample desc",
+                "top",
+                "id_list");
+        CreatedTrelloCardDto createdTrelloCardDto = new CreatedTrelloCardDto(
+                "1",
+                "card sample name",
+                "http://test.com"
+        );
+
+        URI uri = new URI("http://test.com/cards?key=test&token=test&name=card%20sample%20name&desc=card%20sample%20desc&pos=top&idList=id_list");
+
+        when(restTemplate.postForObject(uri, null, CreatedTrelloCardDto.class)).thenReturn(createdTrelloCardDto);
+
+        //When
+        CreatedTrelloCardDto newCard = trelloClient.createNewCard(trelloCardDto);
+
+        //Than
+        assertEquals("1", newCard.getId());
+        assertEquals("card sample name", newCard.getName());
+        assertEquals("http://test.com", newCard.getShortUrl());
     }
+
+
+    @Test
+    public void shouldReturnEmptyList() {
+        TrelloCardDto trelloCardDto = new TrelloCardDto(
+                "Task task",
+                "Test Description",
+                "top",
+                "test_id"
+        );
+
+        CreatedTrelloCardDto createdTrelloCardDto = trelloClient.createNewCard(trelloCardDto);
+
+        assertEquals(null, createdTrelloCardDto);
+    }
+}
