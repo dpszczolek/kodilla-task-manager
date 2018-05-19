@@ -41,6 +41,6 @@ dependencies {
 
 	compile('com.google.code.gson:gson:2.8.2')
 
-	providedRuntime ("org.springframework.boot:spring-boot-starter-tomcat")
+//	providedRuntime ("org.springframework.boot:spring-boot-starter-tomcat")
 }
 apply plugin: 'java'
