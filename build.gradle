@@ -37,6 +37,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-mail:1.5.7.RELEASE')
 	compile('org.springframework.boot:spring-boot-starter-actuator:1.5.10.RELEASE')
 	compile ('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('net.sourceforge.nekohtml:nekohtml:1.9.21')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 
 	compile('com.google.code.gson:gson:2.8.2')
