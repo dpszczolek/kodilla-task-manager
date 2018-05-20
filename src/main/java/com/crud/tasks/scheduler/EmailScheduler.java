@@ -36,14 +36,20 @@ public class EmailScheduler {
         return size + m.format(size);
     }
 
-   // @Scheduled(cron="0 0 10 * * *")
-    @Scheduled(fixedDelay = 10000)
+    @Scheduled(cron="0 0 10 * * *")
+   // @Scheduled(fixedDelay = 10000)
     public void sendInformationEmail() {
             simpleEmailService.send(new Mail(
                 adminConfig.getAdminMail(),
                 SUBJECT,
-                mailCreatorService.buildDailyTasksQuantityEmail(),
+                "You currently have " + msg(),
                 ""
         )); }
+
+       // @Scheduled(cron="0 0 10 * * *")
+         @Scheduled(fixedDelay=10000)
+        public void sendDailyTasksQuantityMail() {
+        mailCreatorService.buildDailyTasksQuantityEmail("You have");
+        }
 
 }

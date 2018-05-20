@@ -46,10 +46,10 @@ public class MailCreatorService {
         return templateEngine.process("mail/created-trello-card-mail", context);
     }
 
-    public String buildDailyTasksQuantityEmail() {
+    public String buildDailyTasksQuantityEmail(String message) {
 
         Context context = new Context();
-     //   context.setVariable("message", message);
+        context.setVariable("message", message);
         context.setVariable("task_url", "http://dpszczolek.github.io");
         context.setVariable("button", "Visit website");
         context.setVariable("admin_name", adminConfig.getAdminName());
