@@ -6,6 +6,7 @@ import com.crud.tasks.scheduler.EmailScheduler;
 import com.crud.tasks.trello.config.AdminConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -46,6 +47,7 @@ public class MailCreatorService {
         return templateEngine.process("mail/created-trello-card-mail", context);
     }
 
+    @Scheduled(fixedDelay=10000)
     public String buildDailyTasksQuantityEmail(String message) {
 
         Context context = new Context();
