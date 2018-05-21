@@ -29,7 +29,6 @@ public class EmailScheduler {
     @Autowired
     private TemplateEngine templateEngine;
 
-    String template = "mail/daily-tasks-quantity-mail";
 
     public String msg() {
         long size = taskRepository.count();
@@ -45,7 +44,7 @@ public class EmailScheduler {
             simpleEmailService.send(new Mail(
                 adminConfig.getAdminMail(),
                 SUBJECT,
-                template,
+                "You have " + msg(),
                 ""
         ));
 
