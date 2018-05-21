@@ -39,7 +39,7 @@ public class TaskController {
         service.delete(taskId);
     }
 
-    @PutMapping("/tasks")
+    @PutMapping(value = "/tasks")
     public TaskDto updateTask (@RequestBody TaskDto taskDto) {
         return taskMapper.mapToTaskDto(service.saveTask(taskMapper.mapToTask(taskDto)));
     }
