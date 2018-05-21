@@ -25,6 +25,9 @@ public class EmailScheduler {
     @Autowired
     private AdminConfig adminConfig;
 
+    @Autowired
+    private MailCreatorService mailCreatorService;
+
     public String msg() {
         long size = taskRepository.count();
         final double[] limit = {0, 1, 2};
@@ -43,4 +46,9 @@ public class EmailScheduler {
                 ""
         )); }
 
+   // @Scheduled(cron="0 0 10 * * *")
+     @Scheduled(fixedDelay = 10000)
+    public void sendDaily() {
+    mailCreatorService.buildDailyTasksQuantityEmail("Done");
+    }
 }

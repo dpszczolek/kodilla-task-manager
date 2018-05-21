@@ -47,7 +47,6 @@ public class MailCreatorService {
         return templateEngine.process("mail/created-trello-card-mail", context);
     }
 
-    @Scheduled(fixedDelay=10000)
     public String buildDailyTasksQuantityEmail(String message) {
 
         Context context = new Context();
