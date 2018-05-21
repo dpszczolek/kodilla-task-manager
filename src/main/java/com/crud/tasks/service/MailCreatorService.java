@@ -48,7 +48,6 @@ public class MailCreatorService {
     }
 
     public String buildDailyTasksQuantityEmail(String message) {
-
         Context context = new Context();
         context.setVariable("message", message);
         context.setVariable("task_url", "http://dpszczolek.github.io");
@@ -60,7 +59,6 @@ public class MailCreatorService {
         context.setVariable("company_name", adminConfig.getCompanyName());
         context.setVariable("show_button", true);
         context.setVariable("is_friend", true);
-        context.setVariable("admin_config", adminConfig);
         return templateEngine.process("mail/daily-tasks-quantity-mail", context);
 
     }

@@ -8,6 +8,7 @@ import com.crud.tasks.trello.config.AdminConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.thymeleaf.TemplateEngine;
 
 import java.text.ChoiceFormat;
 
@@ -26,7 +27,9 @@ public class EmailScheduler {
     private AdminConfig adminConfig;
 
     @Autowired
-    private MailCreatorService mailCreatorService;
+    private TemplateEngine templateEngine;
+
+    String template = "mail/daily-tasks-quantity-mail";
 
     public String msg() {
         long size = taskRepository.count();
@@ -36,19 +39,15 @@ public class EmailScheduler {
         return size + m.format(size);
     }
 
-    @Scheduled(cron="0 0 10 * * *")
+   // @Scheduled(cron="0 0 10 * * *")
    // @Scheduled(fixedDelay = 10000)
     public void sendInformationEmail() {
             simpleEmailService.send(new Mail(
                 adminConfig.getAdminMail(),
                 SUBJECT,
-                "You currently have " + msg(),
+                template,
                 ""
-        )); }
+        ));
 
-   // @Scheduled(cron="0 0 10 * * *")
-     @Scheduled(fixedDelay = 10000)
-    public void sendDaily() {
-    mailCreatorService.buildDailyTasksQuantityEmail("Done");
     }
 }
