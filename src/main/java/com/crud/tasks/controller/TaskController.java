@@ -29,17 +29,17 @@ public class TaskController {
         return taskMapper.mapToTaskDtoList(service.getAllTasks());
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/tasks/{id}")
-    public TaskDto getTask (@PathVariable ("id") long taskId) throws TaskNotFoundException {
+    @RequestMapping(method = RequestMethod.GET, value = "/tasks/{taskId}")
+    public TaskDto getTask (@PathVariable long taskId) throws TaskNotFoundException {
           return taskMapper.mapToTaskDto(Optional.ofNullable(service.getOneTask(taskId)).orElseThrow(TaskNotFoundException::new));
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/tasks/{id}")
-        public void deleteTask (@PathVariable("id") long taskId) {
+    @RequestMapping(method = RequestMethod.DELETE, value = "/tasks/{taskId}")
+        public void deleteTask (@PathVariable long taskId) {
         service.delete(taskId);
     }
 
-    @PutMapping(value = "/tasks")
+    @PutMapping(value="/tasks")
     public TaskDto updateTask (@RequestBody TaskDto taskDto) {
         return taskMapper.mapToTaskDto(service.saveTask(taskMapper.mapToTask(taskDto)));
     }

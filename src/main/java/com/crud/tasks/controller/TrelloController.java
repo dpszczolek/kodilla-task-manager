@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/v1/trello")
-@CrossOrigin("*")
 public class TrelloController {
 
     @Autowired
@@ -23,8 +23,9 @@ public class TrelloController {
         return trelloFacade.fetchTrelloBoards();
     }
 
-    @RequestMapping(method=RequestMethod.POST, value = "/cards", consumes = "application/json")
+    @RequestMapping(method = RequestMethod.POST, value = "/cards")
     public CreatedTrelloCardDto createTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
         return trelloFacade.createCard(trelloCardDto);
     }
 }
+
