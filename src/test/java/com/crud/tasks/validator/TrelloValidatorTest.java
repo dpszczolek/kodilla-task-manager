@@ -24,7 +24,7 @@ public class TrelloValidatorTest {
 
     @Test
     public void testValidateTrelloBoards() {
-
+        //Given
         TrelloList testList1 = new TrelloList("1", "Test List np. 1", false);
         TrelloList testList2 = new TrelloList("2", "Test List no. 2", true);
         TrelloList testList3 = new TrelloList("3", "Test List no. 3", false);
@@ -39,8 +39,10 @@ public class TrelloValidatorTest {
         List<TrelloBoard> trelloBoards = new ArrayList<>();
         trelloBoards.add(trelloBoard);
 
-   //     List<TrelloBoard> fillteredTrelloBoard = trelloValidator.validateTrelloBoards(trelloBoards);
+        //When
+        List<TrelloBoard> fillteredTrelloBoard = trelloValidator.validateTrelloBoards(trelloBoards);
 
-   //     assertEquals(1, fillteredTrelloBoard.size());
+        //Then
+        assertEquals(1, fillteredTrelloBoard.size());
     }
 }

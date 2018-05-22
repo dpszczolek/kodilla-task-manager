@@ -30,12 +30,12 @@ public class TaskController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/tasks/{taskId}")
-    public TaskDto getTask (@PathVariable long taskId) throws TaskNotFoundException {
+    public TaskDto getTask (@PathVariable ("taskId") long taskId) throws TaskNotFoundException {
           return taskMapper.mapToTaskDto(Optional.ofNullable(service.getOneTask(taskId)).orElseThrow(TaskNotFoundException::new));
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/tasks/{taskId}")
-        public void deleteTask (@PathVariable long taskId) {
+        public void deleteTask (@PathVariable ("taskId") long taskId) {
         service.delete(taskId);
     }
 
